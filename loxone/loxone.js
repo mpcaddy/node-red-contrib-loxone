@@ -487,6 +487,12 @@ module.exports = function (RED) {
             category = this.structureData.cats[controlStructure.cat].name;
         }
 
+        //check if control has an action uuid
+        var uuidAction = null;
+        if (controlStructure.uuidAction) {
+            uuidAction = controlStructure.uuidAction;
+        }
+
         return {
             payload: payload,
             topic: controlStructure.name || null,
@@ -498,6 +504,7 @@ module.exports = function (RED) {
             isFavorite: controlStructure.isFavorite || null,
             isSecured: controlStructure.isSecured || null,
             uuid: uuid || null,
+            uuidAction: uuidAction || null,
             msInfo: this.structureData.msInfo,
             lastModified: this.structureData.lastModified
         };
